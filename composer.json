@@ -1,0 +1,44 @@
+{
+	"name": "codemaxbr/iugu-php",
+	"description": "SDK Iugu para PHP",
+	"keywords": ["iugu", "sdk", "php", "api"],
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Lucas Maia",
+			"email": "lucas.codemax@gmail.com"
+		},
+		{
+			"name": "Codemax Sistemas",
+			"email": "contato@codemax.com.br",
+			"homepage": "https://codemax.com.br"
+		}
+	],
+    "minimum-stability": "stable",
+	"require": {
+		"php": ">=8.1",
+		"ext-curl": "*",
+		"ext-json": "*",
+		"ext-mbstring": "*",
+		"guzzlehttp/guzzle": "8.0.x-dev"
+	},
+    "autoload": {
+	    "psr-4": {
+            "Codemax\\": "src/"
+	    }
+    },
+	"autoload-dev": {
+		"psr-4": {
+			"Codemax\\Tests\\": "tests/"
+		}
+	},
+	"support": {
+		"issues": "https://github.com/codemaxbr/iugu-php/issues"
+	},
+	"require-dev": {
+		"symfony/var-dumper": "6.4.x-dev",
+		"phpunit/phpunit": "10.5.x-dev",
+		"orchestra/testbench": "^8.24"
+	}
+}
