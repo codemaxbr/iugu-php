@@ -30,15 +30,15 @@ class CustomerTest extends AbstractTestCase
     }
 
     /** @test */
-    public function testGetAllCustomers()
+    public function test_It_should_list_all_customers()
     {
         $result = $this->api->all();
-        $this->assertIsArray($result->response->items);
         $this->assertSame(200, $result->statusCode);
+        $this->assertIsArray($result->response->items);
     }
 
     /** @test */
-    public function testCreateACustomer()
+    public function test_It_should_create_a_new_customer()
     {
         $result = $this->api->create($this->customer);
         $this->assertSame(200, $result->statusCode);
@@ -49,10 +49,10 @@ class CustomerTest extends AbstractTestCase
     }
 
     /**
-     * @depends testCreateACustomer
+     * @depends test_It_should_create_a_new_customer
      * @test
      */
-    public function testUpdateACustomer(string $id)
+    public function test_It_should_update_the_data_customer(string $id)
     {
         $name = 'Cliente Teste Atualizado';
         $this->customer->setName($name);
@@ -64,10 +64,10 @@ class CustomerTest extends AbstractTestCase
     }
 
     /**
-     * @depends testCreateACustomer
+     * @depends test_It_should_create_a_new_customer
      * @test
      */
-    public function testGetACustomer(string $id)
+    public function test_It_should_get_the_data_customer(string $id)
     {
         $result = $this->api->get($id);
         $this->assertSame(200, $result->statusCode);
@@ -75,10 +75,10 @@ class CustomerTest extends AbstractTestCase
     }
 
     /**
-     * @depends testCreateACustomer
+     * @depends test_It_should_create_a_new_customer
      * @test
      */
-    public function testDeleteACustomer(string $id)
+    public function test_It_should_delete_the_customer(string $id)
     {
         $result = $this->api->delete($id);
         $this->assertSame(200, $result->statusCode);

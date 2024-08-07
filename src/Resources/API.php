@@ -2,7 +2,6 @@
 
 namespace Codemax\Resources;
 
-use Codemax\Base\Endpoints;
 use Codemax\Base\RequestOptions;
 use Codemax\Iugu;
 use GuzzleHttp\Client;
@@ -88,7 +87,7 @@ abstract class API extends Iugu
         if (!empty($tempEndpoint)) {
             if (!empty($option->variables)) {
                 $route = $tempEndpoint["route"];
-                preg_match_all("/\:(\w+)/im", $route, $matches);
+                preg_match_all("/:(\w+)/im", $route, $matches);
                 $varsRoute = $matches[1];
                 $i = 0;
                 foreach ($varsRoute as $value) {

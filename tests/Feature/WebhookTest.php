@@ -24,15 +24,15 @@ class WebhookTest extends AbstractTestCase
     }
 
     /** @test */
-    public function testGetAllWebhooks()
+    public function test_It_should_list_all_webhooks()
     {
         $result = $this->api->all();
-        $this->assertIsArray($result->response);
         $this->assertSame(200, $result->statusCode);
+        $this->assertIsArray($result->response);
     }
 
     /** @test */
-    public function testCreateAWebhook()
+    public function test_It_should_create_a_webhook()
     {
         $result = $this->api->create($this->webhook);
         $this->assertSame(200, $result->statusCode);
@@ -43,10 +43,10 @@ class WebhookTest extends AbstractTestCase
     }
 
     /**
-     * @depends testCreateAWebhook
+     * @depends test_It_should_create_a_webhook
      * @test
      */
-    public function testUpdateAWebhook(string $id)
+    public function test_It_should_update_the_webhook(string $id)
     {
         $event = IuguWebhookEvent::ALL;
         $this->webhook->setEvent($event);
@@ -58,10 +58,10 @@ class WebhookTest extends AbstractTestCase
     }
 
     /**
-     * @depends testCreateAWebhook
+     * @depends test_It_should_create_a_webhook
      * @test
      */
-    public function testGetAWebhook(string $id)
+    public function test_It_should_get_data_the_webhook(string $id)
     {
         $result = $this->api->get($id);
         $this->assertSame(200, $result->statusCode);
@@ -69,10 +69,10 @@ class WebhookTest extends AbstractTestCase
     }
 
     /**
-     * @depends testCreateAWebhook
+     * @depends test_It_should_create_a_webhook
      * @test
      */
-    public function testChangeStatusAWebhook(string $id)
+    public function test_It_should_change_status_the_webhook(string $id)
     {
         $result = $this->api->status($id);
         $this->assertSame(200, $result->statusCode);
@@ -80,10 +80,10 @@ class WebhookTest extends AbstractTestCase
     }
 
     /**
-     * @depends testCreateAWebhook
+     * @depends test_It_should_create_a_webhook
      * @test
      */
-    public function testDeleteAWebhook(string $id)
+    public function test_It_should_remove_the_webhook(string $id)
     {
         $result = $this->api->delete($id);
         $this->assertSame(200, $result->statusCode);
