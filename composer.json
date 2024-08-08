@@ -21,7 +21,8 @@
 		"ext-curl": "*",
 		"ext-json": "*",
 		"ext-mbstring": "*",
-		"guzzlehttp/guzzle": "8.0.x-dev"
+		"guzzlehttp/guzzle": "8.0.x-dev",
+		"nesbot/carbon": "^2.72"
 	},
     "autoload": {
 	    "psr-4": {

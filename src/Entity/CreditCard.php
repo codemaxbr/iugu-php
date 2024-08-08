@@ -10,8 +10,11 @@ class CreditCard implements \JsonSerializable
     /** @var string $cvv CVV do cartão de crédito */
     public string $cvv;
 
-    /** @var string $holder_name Nome impresso no cartão de crédito */
-    public string $holder_name;
+    /** @var string $first_name Primeiro Nome impresso no cartão de crédito */
+    public string $first_name;
+
+    /** @var string $last_name Primeiro Nome impresso no cartão de crédito */
+    public string $last_name;
 
     /** @var string $expire_month Mês de vencimento no formato "MM" (Ex: 01, 06, 12) */
     public string $expire_month;
@@ -41,15 +44,26 @@ class CreditCard implements \JsonSerializable
         return $this->cvv;
     }
 
-    public function setHolderName(string $holder_name): CreditCard
+    public function setFirstName(string $first_name): CreditCard
     {
-        $this->holder_name = $holder_name;
+        $this->first_name = $first_name;
         return $this;
     }
 
-    public function getHolderName(): string
+    public function getFirstName(): string
     {
-        return $this->holder_name;
+        return $this->first_name;
+    }
+
+    public function setLastName(string $last_name): CreditCard
+    {
+        $this->last_name = $last_name;
+        return $this;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->last_name;
     }
 
     public function setExpireMonth(string $expire_month): CreditCard
@@ -76,12 +90,11 @@ class CreditCard implements \JsonSerializable
 
     public function jsonSerialize()
     {
-        $holder_name = explode(' ', $this->holder_name);
         return [
             'number' => $this->number,
             'verification_value' => $this->cvv,
-            'first_name' => $holder_name[0],
-            'last_name' => $holder_name[1] ?? null,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name ?? null,
             'month' => $this->expire_month,
             'year' => $this->expire_year,
         ];

@@ -2,21 +2,25 @@
 
 namespace Codemax;
 
+use Codemax\Resources\Card;
+use Codemax\Resources\Charge;
 use Codemax\Resources\Webhook;
 use Codemax\Resources\Customer;
 
 /**
  * @method static Customer customer()
  * @method static Webhook webhook()
+ * @method static Charge charge()
+ * @method static Card card()
  */
 class Iugu
 {
     public static $apiKey;
-    public static $environment = 'production';
+    public static $accountId;
 
-    public static function setEnviroment($env)
+    public static function setAccountId($accountId)
     {
-        self::$environment = $env;
+        self::$accountId = $accountId;
     }
 
     public static function setApiKey($apiKey)
@@ -31,6 +35,6 @@ class Iugu
             throw new \Exception("Class '{$class}' not found");
         }
 
-        return new $class(self::$apiKey, self::$environment);
+        return new $class(self::$apiKey, self::$accountId);
     }
 }

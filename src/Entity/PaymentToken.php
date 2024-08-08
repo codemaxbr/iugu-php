@@ -16,11 +16,6 @@ class PaymentToken implements \JsonSerializable
     /** @var CreditCard $data Dados do cartão de crédito */
     public CreditCard $data;
 
-    public function jsonSerialize()
-    {
-        return [];
-    }
-
     public function setAccountId(string $account_id): PaymentToken
     {
         $this->account_id = $account_id;
@@ -52,5 +47,15 @@ class PaymentToken implements \JsonSerializable
     public function isTest(): bool
     {
         return $this->test;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'account_id' => $this->getAccountId(),
+            'method' => $this->method,
+            'test' => $this->test ?? false,
+            'data' => $this->getData(),
+        ];
     }
 }
