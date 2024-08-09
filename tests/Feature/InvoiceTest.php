@@ -6,6 +6,7 @@ use Codemax\Entity\Address;
 use Codemax\Entity\CreditCard;
 use Codemax\Entity\Customer;
 use Codemax\Entity\CustomVariable;
+use Codemax\Entity\ExternalPayment;
 use Codemax\Entity\Invoice;
 use Codemax\Entity\Item;
 use Codemax\Entity\Payer;
@@ -40,7 +41,7 @@ class InvoiceTest extends AbstractTestCase
 
         $this->payer = (new Payer())
             ->setName('Cliente Teste')
-            ->setEmail('cliente.teste@gmail.com')
+            ->setEmail('mafojek666@luvnish.com')
             ->setCpfCnpj('49193961049')
             ->setPhonePrefix('21')
             ->setPhone('999999999')
@@ -53,7 +54,7 @@ class InvoiceTest extends AbstractTestCase
 
         $this->customer = (new Customer())
             ->setName('Cliente Teste')
-            ->setEmail('cliente.teste@gmail.com')
+            ->setEmail('mafojek666@luvnish.com')
             ->setCpfCnpj('49193961049')
             ->setZipCode('24455400')
             ->setStreet('Rua Ismael do Monte')
@@ -96,6 +97,15 @@ class InvoiceTest extends AbstractTestCase
         return $result->response->id;
     }
 
+    /** @test */
+    public function test_It_should_list_all_invoices()
+    {
+        $result = $this->api->all();
+        $this->assertSame(200, $result->statusCode);
+        $this->assertObjectHasProperty('items', $result->response);
+        $this->assertIsArray($result->response->items);
+    }
+
     /**
      * @depends test_It_should_create_a_new_customer
      * @test
@@ -119,6 +129,18 @@ class InvoiceTest extends AbstractTestCase
     }
 
     /**
+     * @depends test_It_should_create_an_invoice_for_a_customer
+     * @test
+     */
+    public function test_It_should_be_show_details_of_than_invoice($invoice_id)
+    {
+        $result = $this->api->get($invoice_id);
+        $this->assertSame(200, $result->statusCode);
+        $this->assertObjectHasProperty('id', $result->response);
+        $this->assertSame($invoice_id, $result->response->id);
+    }
+
+    /**
      * @depends test_It_should_create_a_new_customer
      * @test
      */
@@ -133,6 +155,24 @@ class InvoiceTest extends AbstractTestCase
         $this->assertSame(200, $result->statusCode);
         $this->assertObjectHasProperty('url', $result->response);
         $this->assertObjectHasProperty('invoice_id', $result->response);
+
+        return $result->response->invoice_id;
+    }
+
+    /**
+     * @depends test_It_should_charge_detached_with_bank_slip
+     * @test
+     */
+    public function test_It_should_make_paid_an_invoice($invoice_id)
+    {
+        $data = (new ExternalPayment())
+            ->setExternalPaymentId('123456')
+            ->setExternalPaymentDescription('Pagamento via maquininha');
+
+        $result = $this->api->make_paid($invoice_id, $data);
+        $this->assertSame(200, $result->statusCode);
+        $this->assertObjectHasProperty('id', $result->response);
+        $this->assertSame('externally_paid', $result->response->status);
     }
 
     /**
@@ -145,7 +185,6 @@ class InvoiceTest extends AbstractTestCase
         $data = (new Payment())
             ->setPayer($this->payer)
             ->setCustomerId($customer_id)
-            //->setItems([$this->item])
             ->setInvoiceId($invoice_id);
 
         $result = Iugu::charge()->direct($data);
@@ -165,7 +204,6 @@ class InvoiceTest extends AbstractTestCase
         $data = (new Payment())
             ->setPayer($this->payer)
             ->setCustomerId($customer_id)
-            //->setItems([$this->item])
             ->setInvoiceId($invoice_id)
             ->setToken($token_id);
 
@@ -173,6 +211,28 @@ class InvoiceTest extends AbstractTestCase
         $this->assertSame(200, $result->statusCode);
         $this->assertSame('captured', $result->response->status);
         $this->assertObjectHasProperty('invoice_id', $result->response);
+    }
+
+    /**
+     * @depends test_It_should_create_an_invoice_for_a_customer
+     * @test
+     */
+    public function test_It_should_refund_the_amount_charge_of_than_invoice($invoice_id)
+    {
+        $result = $this->api->refund($invoice_id);
+        $this->assertSame(200, $result->statusCode);
+        $this->assertObjectHasProperty('id', $result->response);
+        $this->assertSame('refunded', $result->response->status);
+    }
+
+    /**
+     * @depends test_It_should_create_an_invoice_for_a_customer
+     * @test
+     */
+    public function test_It_should_cancel_an_invoice($invoice_id)
+    {
+        $result = $this->api->cancel($invoice_id);
+        $this->assertTrue(200 || 400, $result->statusCode); // 400 if the invoice is already refunded | paid | canceled
     }
 
     /**
