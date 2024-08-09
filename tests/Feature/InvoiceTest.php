@@ -41,7 +41,7 @@ class InvoiceTest extends AbstractTestCase
 
         $this->payer = (new Payer())
             ->setName('Cliente Teste')
-            ->setEmail('mafojek666@luvnish.com')
+            ->setEmail('kawibe9729@mvpalace.com')
             ->setCpfCnpj('49193961049')
             ->setPhonePrefix('21')
             ->setPhone('999999999')
@@ -54,7 +54,7 @@ class InvoiceTest extends AbstractTestCase
 
         $this->customer = (new Customer())
             ->setName('Cliente Teste')
-            ->setEmail('mafojek666@luvnish.com')
+            ->setEmail('kawibe9729@mvpalace.com')
             ->setCpfCnpj('49193961049')
             ->setZipCode('24455400')
             ->setStreet('Rua Ismael do Monte')
@@ -66,8 +66,8 @@ class InvoiceTest extends AbstractTestCase
         $this->card = (new CreditCard())
             ->setNumber('4111111111111111')
             ->setCvv('123')
-            ->setFirstName('Lucas Maia')
-            ->setLastName('de Paula')
+            ->setFirstName('Cliente Teste')
+            ->setLastName('da Silva')
             ->setExpireMonth('03')
             ->setExpireYear('2030');
 

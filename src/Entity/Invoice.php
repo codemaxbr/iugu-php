@@ -551,7 +551,7 @@ class Invoice implements \JsonSerializable
             'per_day_interest_cents' => $this->per_day_interest_cents ?? null,
             'discount_cents' => $this->discount_cents ?? null,
             'customer_id' => $this->customer_id ?? null,
-            'ignore_due_email' => $this->ignore_due_email ?? false,
+            'ignore_due_email' => $this->ignore_due_email ?? true,
             'subscription_id' => $this->subscription_id ?? null,
             'payable_with' => $this->payable_with ?? ['all'],
             'credits' => $this->credits ?? null,
