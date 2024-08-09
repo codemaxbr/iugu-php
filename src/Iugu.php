@@ -4,6 +4,7 @@ namespace Codemax;
 
 use Codemax\Resources\Card;
 use Codemax\Resources\Charge;
+use Codemax\Resources\Invoice;
 use Codemax\Resources\Webhook;
 use Codemax\Resources\Customer;
 
@@ -12,6 +13,7 @@ use Codemax\Resources\Customer;
  * @method static Webhook webhook()
  * @method static Charge charge()
  * @method static Card card()
+ * @method static Invoice invoice()
  */
 class Iugu
 {
