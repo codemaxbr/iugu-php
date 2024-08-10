@@ -6,6 +6,7 @@ use Iugu\Resources\Card;
 use Iugu\Resources\Charge;
 use Iugu\Resources\Invoice;
 use Iugu\Resources\Plan;
+use Iugu\Resources\Subscription;
 use Iugu\Resources\Webhook;
 use Iugu\Resources\Customer;
 
@@ -16,6 +17,7 @@ use Iugu\Resources\Customer;
  * @method static Card card()
  * @method static Invoice invoice()
  * @method static Plan plan()
+ * @method static Subscription subscription()
  */
 class Iugu
 {

@@ -3,18 +3,38 @@
 namespace Iugu\Entity;
 
 use Iugu\Base\IntervalType;
+use Iugu\Base\PayableWith;
 
 class Plan implements \JsonSerializable
 {
+    /** @var string $name Nome do plano */
     public string $name;
+
+    /** @var string $identifier Identificador do plano */
     public string $identifier;
+
+    /** @var int $interval Ciclo do plano (Número inteiro maior que 0). Intervalo até a próxima cobrança. */
     public int $interval;
+
+    /** @var string $interval_type Tipo do ciclo do plano. Valores possíveis: "weeks" (Semanas), "months" (Meses) */
     public string $interval_type = IntervalType::MONTHS;
+
+    /** @var int $value_cents Preço do plano em centavos */
     public int $value_cents;
+
+    /** @var PayableWith[]|null $payable_with Método de pagamento que será disponibilizado para as faturas pertencentes a assinaturas deste plano ('all', 'credit_card', 'bank_slip' ou 'pix') */
     public ?array $payable_with = ['all'];
+
+    /** @var Feature[]|null $features Características do plano */
     public ?array $features = [];
+
+    /** @var int|null $billing_days Dias de faturamento (Quantos dias antes de vencer a assinatura será gerada uma nova fatura) */
     public ?int $billing_days;
+
+    /** @var int|null $max_cycles Limite de ciclos da assinatura - 0 para indeterminado */
     public ?int $max_cycles;
+
+    /** @var int|null $invoice_max_installments Envie um valor de '1' à '12'. Se este parâmetro não for enviado, a quantidade máxima de parcelas será o que está configurado na conta. */
     public ?int $invoice_max_installments;
 
     public function setName(string $name): Plan
