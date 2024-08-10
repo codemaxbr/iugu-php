@@ -3,40 +3,29 @@
 namespace Iugu\Resources;
 
 use Iugu\Base\RequestOptions;
-use Iugu\Entity\Customer as CustomerAlias;
+use Iugu\Entity\Plan as PlanAlias;
 
-class Customer extends API
+class Plan extends API
 {
     public function __construct()
     {
         $this->loadEndpoints();
     }
 
+    public function create(PlanAlias $data)
+    {
+        $options = new RequestOptions([
+            'endpoint' => 'createPlan',
+            'payload' => $data,
+        ]);
+
+        return $this->requestHttp($options);
+    }
+
     public function all()
     {
         $options = new RequestOptions([
-            'endpoint' => 'getCustomers',
-        ]);
-
-        return $this->requestHttp($options);
-    }
-
-    public function create(CustomerAlias $data)
-    {
-        $options = new RequestOptions([
-            'endpoint' => 'createCustomer',
-            'payload' => $data,
-        ]);
-
-        return $this->requestHttp($options);
-    }
-
-    public function update(string $id, CustomerAlias $data)
-    {
-        $options = new RequestOptions([
-            'endpoint' => 'updateCustomer',
-            'payload' => $data,
-            'variables' => [$id],
+            'endpoint' => 'getPlans',
         ]);
 
         return $this->requestHttp($options);
@@ -45,7 +34,18 @@ class Customer extends API
     public function get(string $id)
     {
         $options = new RequestOptions([
-            'endpoint' => 'getCustomer',
+            'endpoint' => 'getPlan',
+            'variables' => [$id],
+        ]);
+
+        return $this->requestHttp($options);
+    }
+
+    public function update(string $id, PlanAlias $data)
+    {
+        $options = new RequestOptions([
+            'endpoint' => 'updatePlan',
+            'payload' => $data,
             'variables' => [$id],
         ]);
 
@@ -55,7 +55,7 @@ class Customer extends API
     public function delete(string $id)
     {
         $options = new RequestOptions([
-            'endpoint' => 'deleteCustomer',
+            'endpoint' => 'deletePlan',
             'variables' => [$id],
         ]);
 
@@ -65,26 +65,26 @@ class Customer extends API
     public function loadEndpoints()
     {
         $this->endpoints = [
-            'getCustomer' => [
-                'route' => '/customers/:id',
-                'method' => 'GET'
-            ],
-            'getCustomers' => [
-                'route' => '/customers',
-                'method' => 'GET'
-            ],
-            'createCustomer' => [
-                'route' => '/customers',
+            'createPlan' => [
+                'route' => '/plans',
                 'method' => 'POST'
             ],
-            'updateCustomer' => [
-                'route' => '/customers/:id',
+            'getPlans' => [
+                'route' => '/plans',
+                'method' => 'GET'
+            ],
+            'getPlan' => [
+                'route' => '/plans/:id',
+                'method' => 'GET'
+            ],
+            'updatePlan' => [
+                'route' => '/plans/:id',
                 'method' => 'PUT'
             ],
-            'deleteCustomer' => [
-                'route' => '/customers/:id',
+            'deletePlan' => [
+                'route' => '/plans/:id',
                 'method' => 'DELETE'
-            ],
+            ]
         ];
     }
 }

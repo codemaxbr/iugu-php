@@ -1,15 +1,15 @@
 <?php
 
-namespace Codemax\Tests\Feature;
+namespace Iugu\Tests\Feature;
 
-use Codemax\Base\IuguWebhookEvent;
-use Codemax\Entity\CreditCard;
-use Codemax\Entity\Customer;
-use Codemax\Entity\PaymentMethod;
-use Codemax\Entity\PaymentToken;
-use Codemax\Iugu;
-use Codemax\Resources\Card as API;
-use Codemax\Tests\AbstractTestCase;
+use Iugu\Base\IuguWebhookEvent;
+use Iugu\Entity\CreditCard;
+use Iugu\Entity\Customer;
+use Iugu\Entity\PaymentMethod;
+use Iugu\Entity\PaymentToken;
+use Iugu\Iugu;
+use Iugu\Resources\Card as API;
+use Iugu\Tests\AbstractTestCase;
 
 class CardTest extends AbstractTestCase
 {

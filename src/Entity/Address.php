@@ -1,6 +1,6 @@
 <?php
 
-namespace Codemax\Entity;
+namespace Iugu\Entity;
 
 class Address implements \JsonSerializable
 {

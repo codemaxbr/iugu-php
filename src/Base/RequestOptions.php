@@ -1,6 +1,6 @@
 <?php
 
-namespace Codemax\Base;
+namespace Iugu\Base;
 
 class RequestOptions
 {

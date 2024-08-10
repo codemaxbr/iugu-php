@@ -1,11 +1,11 @@
 <?php
 
-namespace Codemax\Resources;
+namespace Iugu\Resources;
 
-use Codemax\Base\RequestOptions;
-use Codemax\Entity\ExternalPayment;
-use Codemax\Entity\Invoice as Entity;
-use Codemax\Entity\Payment;
+use Iugu\Base\RequestOptions;
+use Iugu\Entity\ExternalPayment;
+use Iugu\Entity\Invoice as Entity;
+use Iugu\Entity\Payment;
 
 class Invoice extends API
 {

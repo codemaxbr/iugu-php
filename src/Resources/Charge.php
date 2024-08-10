@@ -1,10 +1,10 @@
 <?php
 
-namespace Codemax\Resources;
+namespace Iugu\Resources;
 
-use Codemax\Base\RequestOptions;
-use Codemax\Entity\Invoice;
-use Codemax\Entity\Payment;
+use Iugu\Base\RequestOptions;
+use Iugu\Entity\Invoice;
+use Iugu\Entity\Payment;
 
 class Charge extends API
 {

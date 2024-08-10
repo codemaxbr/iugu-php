@@ -1,6 +1,6 @@
 <?php
 
-namespace Codemax\Tests;
+namespace Iugu\Tests;
 
 use Orchestra\Testbench\TestCase;
 

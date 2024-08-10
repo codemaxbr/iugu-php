@@ -1,6 +1,6 @@
 <?php
 
-namespace Codemax\Entity;
+namespace Iugu\Entity;
 
 use Carbon\Carbon;
 

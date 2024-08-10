@@ -26,12 +26,12 @@
 	},
     "autoload": {
 	    "psr-4": {
-            "Codemax\\": "src/"
+            "Iugu\\": "src/"
 	    }
     },
 	"autoload-dev": {
 		"psr-4": {
-			"Codemax\\Tests\\": "tests/"
+			"Iugu\\Tests\\": "tests/"
 		}
 	},
 	"support": {

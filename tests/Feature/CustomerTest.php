@@ -1,11 +1,11 @@
 <?php
 
-namespace Codemax\Tests\Feature;
+namespace Iugu\Tests\Feature;
 
-use Codemax\Entity\Customer;
-use Codemax\Iugu;
-use Codemax\Resources\Customer as API;
-use Codemax\Tests\AbstractTestCase;
+use Iugu\Entity\Customer;
+use Iugu\Iugu;
+use Iugu\Resources\Customer as API;
+use Iugu\Tests\AbstractTestCase;
 
 class CustomerTest extends AbstractTestCase
 {

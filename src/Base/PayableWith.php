@@ -1,8 +1,8 @@
 <?php
 
-namespace Codemax\Base;
+namespace Iugu\Base;
 
-class PayableWith
+final class PayableWith
 {
     const ALL = 'all';
     const CREDIT_CARD = 'credit_card';

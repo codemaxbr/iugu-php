@@ -1,9 +1,9 @@
 <?php
 
-namespace Codemax\Resources;
+namespace Iugu\Resources;
 
-use Codemax\Base\RequestOptions;
-use Codemax\Iugu;
+use Iugu\Base\RequestOptions;
+use Iugu\Iugu;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;

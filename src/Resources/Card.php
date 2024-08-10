@@ -1,10 +1,10 @@
 <?php
 
-namespace Codemax\Resources;
+namespace Iugu\Resources;
 
-use Codemax\Base\RequestOptions;
-use Codemax\Entity\PaymentMethod;
-use Codemax\Entity\PaymentToken;
+use Iugu\Base\RequestOptions;
+use Iugu\Entity\PaymentMethod;
+use Iugu\Entity\PaymentToken;
 
 class Card extends API
 {

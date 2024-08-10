@@ -1,20 +1,20 @@
 <?php
 
-namespace Codemax\Tests\Feature;
+namespace Iugu\Tests\Feature;
 
-use Codemax\Entity\Address;
-use Codemax\Entity\CreditCard;
-use Codemax\Entity\Customer;
-use Codemax\Entity\CustomVariable;
-use Codemax\Entity\ExternalPayment;
-use Codemax\Entity\Invoice;
-use Codemax\Entity\Item;
-use Codemax\Entity\Payer;
-use Codemax\Entity\Payment;
-use Codemax\Entity\PaymentToken;
-use Codemax\Iugu;
-use Codemax\Resources\Invoice as API;
-use Codemax\Tests\AbstractTestCase;
+use Iugu\Entity\Address;
+use Iugu\Entity\CreditCard;
+use Iugu\Entity\Customer;
+use Iugu\Entity\CustomVariable;
+use Iugu\Entity\ExternalPayment;
+use Iugu\Entity\Invoice;
+use Iugu\Entity\Item;
+use Iugu\Entity\Payer;
+use Iugu\Entity\Payment;
+use Iugu\Entity\PaymentToken;
+use Iugu\Iugu;
+use Iugu\Resources\Invoice as API;
+use Iugu\Tests\AbstractTestCase;
 
 class InvoiceTest extends AbstractTestCase
 {

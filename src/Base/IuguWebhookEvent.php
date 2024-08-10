@@ -1,8 +1,8 @@
 <?php
 
-namespace Codemax\Base;
+namespace Iugu\Base;
 
-class IuguWebhookEvent
+final class IuguWebhookEvent
 {
     const ALL = 'all';
     const CUSTOMER_PAYMENT_METHOD_NEW = 'customer_payment_method.new';

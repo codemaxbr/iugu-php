@@ -1,9 +1,9 @@
 <?php
 
-namespace Codemax\Resources;
+namespace Iugu\Resources;
 
-use Codemax\Base\RequestOptions;
-use Codemax\Entity\Webhook as WebhookAlias;
+use Iugu\Base\RequestOptions;
+use Iugu\Entity\Webhook as WebhookAlias;
 
 class Webhook extends API
 {

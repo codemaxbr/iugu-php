@@ -1,12 +1,12 @@
 <?php
 
-namespace Codemax\Tests\Feature;
+namespace Iugu\Tests\Feature;
 
-use Codemax\Base\IuguWebhookEvent;
-use Codemax\Entity\Webhook;
-use Codemax\Iugu;
-use Codemax\Resources\Webhook as API;
-use Codemax\Tests\AbstractTestCase;
+use Iugu\Base\IuguWebhookEvent;
+use Iugu\Entity\Webhook;
+use Iugu\Iugu;
+use Iugu\Resources\Webhook as API;
+use Iugu\Tests\AbstractTestCase;
 
 class WebhookTest extends AbstractTestCase
 {

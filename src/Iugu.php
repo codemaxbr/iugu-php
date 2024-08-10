@@ -1,12 +1,13 @@
 <?php
 
-namespace Codemax;
+namespace Iugu;
 
-use Codemax\Resources\Card;
-use Codemax\Resources\Charge;
-use Codemax\Resources\Invoice;
-use Codemax\Resources\Webhook;
-use Codemax\Resources\Customer;
+use Iugu\Resources\Card;
+use Iugu\Resources\Charge;
+use Iugu\Resources\Invoice;
+use Iugu\Resources\Plan;
+use Iugu\Resources\Webhook;
+use Iugu\Resources\Customer;
 
 /**
  * @method static Customer customer()
@@ -14,6 +15,7 @@ use Codemax\Resources\Customer;
  * @method static Charge charge()
  * @method static Card card()
  * @method static Invoice invoice()
+ * @method static Plan plan()
  */
 class Iugu
 {
@@ -32,7 +34,7 @@ class Iugu
 
     public static function __callStatic($method, $args = null)
     {
-        $class = '\\Codemax\\Resources\\' . ucfirst($method);
+        $class = '\\Iugu\\Resources\\' . ucfirst($method);
         if (!class_exists($class)) {
             throw new \Exception("Class '{$class}' not found");
         }
