@@ -52,6 +52,26 @@ class Subscription extends API
         return $this->requestHttp($options);
     }
 
+    public function suspend(string $id)
+    {
+        $options = new RequestOptions([
+            'endpoint' => 'suspendSubscription',
+            'variables' => [$id],
+        ]);
+
+        return $this->requestHttp($options);
+    }
+
+    public function activate(string $id)
+    {
+        $options = new RequestOptions([
+            'endpoint' => 'activateSubscription',
+            'variables' => [$id],
+        ]);
+
+        return $this->requestHttp($options);
+    }
+
     public function delete(string $id)
     {
         $options = new RequestOptions([
@@ -80,6 +100,14 @@ class Subscription extends API
             'updateSubscription' => [
                 'route' => '/subscriptions/:id',
                 'method' => 'PUT'
+            ],
+            'suspendSubscription' => [
+                'route' => '/subscriptions/:id/suspend',
+                'method' => 'POST'
+            ],
+            'activateSubscription' => [
+                'route' => '/subscriptions/:id/activate',
+                'method' => 'POST'
             ],
             'deleteSubscription' => [
                 'route' => '/subscriptions/:id',
